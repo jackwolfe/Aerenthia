@@ -1,2 +1,33 @@
-<h1><%= room.title %></h1>
-<p><%= room.description %></p>
+<ul id="history"></ul>
+<input type="text" id="command"/>
+<a href="#" id="send">Send</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+  socket.on('room', function (data) {
+    console.log(data);
+    $("#history").append("<li>"+data.room.title+"</li>");
+    $("#history").append("<li>"+data.room.description+"</li>");
+    $("#history").append("<li>"+data.room.exits+"</li>");
+    /*socket.emit('my other event', { my: 'data' });*/
+  });
+  socket.on('speak', function (data) {
+    console.log(data);
+    var command = $("#command").val();
+    $("#history").append("<li>"+data+"</li>");
+  });
+  socket.on('error', function (data) {
+    console.log(data);
+    var command = $("#command").val();
+    $("#history").append("<li>"+data+"</li>");
+  });
+  $("#send").click(function(){
+    var command = $("#command").val();
+    $("#history").append("<li>"+command+"</li>");
+    socket.emit('command', command);
+    $("#command").val('');
+  });
+</script>
