@@ -36,24 +36,38 @@ var createRoom = function(){
   room.description = 'Before what should be you, but is not you, stretches a vast emptiness as far as your non-existant eyes can see.';
   room.allExits = 'None.';
   room.obvExits = 'None.';
+  room.save();
 };
-createRoom();
-console.log(db.Room.findOne({name: '[The Void]'}));
+db.room.findOne({name: '[The Void]'}, function(err, room){
+  if (!room){
+    createRoom();
+    console.log('New room created!');
+  };
+});
+
 
 // Routes
 
 app.get('/', routes.index);
 
+app.get('/aerenthia', routes.aerenthia);
+
+app.post('/login', routes.login);
+
+app.get('/logout', routes.logout);
+
+app.post('/register', routes.register);
+
+
 // Realtime Connection
 
 io.sockets.on('connection', function (socket) {
   var sendRoom = function(){
-    socket.emit('room', { 
-      room: {
-        title: '[The Void]',
-        description: 'Before what should be you, but is not you, stretches a vast emptiness as far as your non-existant eyes can see.',
-        exits: 'Obvious Exits: None.'
-      } 
+    db.room.findOne({obvExits: 'None.'}, function(err, room){
+      socket.emit('room', room);
+      console.log('sent emit.');
+      console.log("room:");
+      console.log("err:");
     });
   };
   sendRoom();
@@ -61,13 +75,13 @@ io.sockets.on('connection', function (socket) {
     socket.emit('error', "Even if you did exist, that probably still wouldn't be a very good idea.")
   };
   socket.on('command', function (command) {
-    var say = /say |Say |\"|\'/
+    var say = /^say |^Say |^\"|^\'/
     var saySearch = command.search(say);
     var saySplit = command.split(say);
     var sayMessage = saySplit[1];
     var speak = function(){
-      socket.broadcast.emit('speak', "Someone says, \""+sayMessage+"\"");
-      socket.emit('speak', "You say, \""+sayMessage+"\"");
+      socket.broadcast.emit('speak', "The Void shudders as voiceless Words spill into existence, \""+sayMessage+"\"");
+      socket.emit('speak', "The Void shudders as voiceless Words spill into existence, \""+sayMessage+"\"");
     };
     if(command == "look"){
       sendRoom();

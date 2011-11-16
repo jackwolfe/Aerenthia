@@ -1,33 +1,52 @@
-<ul id="history"></ul>
-<input type="text" id="command"/>
-<a href="#" id="send">Send</a>
+<h1>AERENTHIA</h1>
+
+<div id="regLogButtons">
+  <button type="button" id="regButton">Registration Form</h2>
+  
+  <button type="button" id="logButton">Sign In Form</h2>
+</div>
+
+<div id="regLogForms">
+  <div id="regFormDiv">
+    <form id="registerForm" method="POST" action="/register">
+      <label for="EMail">EMail</label><input type="text" value="" placeholder="EMail@example.com" name="regEMail" id="regEMail"/><br/>
+      <label for="desiredUsername">Desired Username</label><input type="text" value="" placeholder="Username" name="regUsername" id="regUsername"/><br/>
+      <label for="desiredPassword">Desired Password</label><input type="password" value="" placeholder="Password" name="regPassword" id="regPassword"/><br/>
+      <input type="submit" value="Register" id="regSubmit" name="regSubmit"/>
+      <br class="clear"/>
+    </form>
+  </div>
+
+  <br/>
+
+  <div id="loginFormDiv">
+    <form id="loginForm" method="POST" action="/login">
+      <label for="username">Username</label><input type="text" value="" placeholder="Username" name="loginUsername" id="loginUsername"/><br/>
+      <label for="password">Password</label><input type="password" value="" placeholder="Password" name="loginPassword" id="loginPassword"/><br/>
+      <input type="submit" value="Sign In" id="loginSubmit" name="loginSubmit"/>
+      <br class="clear"/>
+    </form>
+  </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
-<script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://localhost');
-  socket.on('room', function (data) {
-    console.log(data);
-    $("#history").append("<li>"+data.room.title+"</li>");
-    $("#history").append("<li>"+data.room.description+"</li>");
-    $("#history").append("<li>"+data.room.exits+"</li>");
-    /*socket.emit('my other event', { my: 'data' });*/
+  $(function(){
+    $("#regButton").click(function(){
+      $("#loginFormDiv").fadeOut('normal', function(){
+        $("#regFormDiv").fadeIn('normal', function(){
+        });
+      });
+    });
   });
-  socket.on('speak', function (data) {
-    console.log(data);
-    var command = $("#command").val();
-    $("#history").append("<li>"+data+"</li>");
-  });
-  socket.on('error', function (data) {
-    console.log(data);
-    var command = $("#command").val();
-    $("#history").append("<li>"+data+"</li>");
-  });
-  $("#send").click(function(){
-    var command = $("#command").val();
-    $("#history").append("<li>"+command+"</li>");
-    socket.emit('command', command);
-    $("#command").val('');
+  
+  $(function(){
+    $("#logButton").click(function(){
+      $("#regFormDiv").fadeOut('normal',function(){
+        $("#loginFormDiv").fadeIn('normal', function(){
+        });
+      });
+    });
   });
 </script>

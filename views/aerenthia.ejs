@@ -1,0 +1,47 @@
+<div id="aerenthia">
+  <a href="/logout" id="logout">Log Out</a>
+  <ul id="history"></ul>
+</div>
+
+<div id="footer">
+  <input type="text" id="command"/>
+  <a href="#" id="send">Send</a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost/');
+  socket.on('room', function (data) {
+    console.log(data);
+    $("#history").append("<li>"+data.name+"</li>");
+    $("#history").append("<li>"+data.description+"</li>");
+    $("#history").append("<li>"+data.obvExits+"</li>");
+    /*socket.emit('my other event', { my: 'data' });*/
+  });
+  socket.on('speak', function (data) {
+    console.log(data);
+    var command = $("#command").val();
+    $("#history").append("<li>"+data+"</li>");
+  });
+  socket.on('error', function (data) {
+    console.log(data);
+    var command = $("#command").val();
+    $("#history").append("<li>"+data+"</li>");
+  });
+  $("#send").click(function(){
+    var command = $("#command").val();
+    $("#history").append("<li>"+command+"</li>");
+    socket.emit('command', command);
+    $("#command").val('');
+    $("#command").focus();
+  });
+  
+  $("#command").keypress(function(event) {
+    if (event.which == 13) {
+      $('#send').click();
+    };
+  });
+  
+</script>

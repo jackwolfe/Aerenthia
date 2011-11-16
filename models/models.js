@@ -1,10 +1,22 @@
 var mongoose  = require('mongoose');
-mongoose.connect('mongodb://localhost:3000/');
+mongoose.connect('mongodb://localhost/aerenthia');
 
 var Schema = mongoose.Schema;
 
+var User = new Schema({
+    name        : String
+  , email       : String
+  , password    : String
+  , userID      : String
+  , slug        : {type: String, unique: true}
+  , createdAt   : Date
+  , alphaTester : Boolean
+});
+mongoose.model('User', User);
+exports.user = mongoose.model('User');
+
 var Room = new Schema({
-    title       : String
+    name        : String
   , description : String
   , obvExits    : String
   , allExits    : String
