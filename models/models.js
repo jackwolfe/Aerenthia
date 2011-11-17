@@ -27,5 +27,6 @@ exports.room = mongoose.model('Room');
 exports.user_list = {
   techwraith: true
 , Jack: true
-, blah: true
+, jeffreykaine: true
+, orionsreverie: true
 }
