@@ -23,3 +23,9 @@ var Room = new Schema({
 });
 mongoose.model('Room', Room);
 exports.room = mongoose.model('Room');
+
+exports.user_list = {
+  techwraith: true
+, Jack: true
+, blah: true
+}

@@ -13,14 +13,20 @@ exports.register = function(req, res){
     user.slug = user.name.toLowerCase().replace(/[^a-z A-Z 0-9]+/g, '');
     user.createdAt = new Date();
     req.session.user = user;
-    user.save();
+    console.log('Assigned this user to her session.');
+    if (!user.alphaTester && !db.user_list[user.name]) {
+      res.redirect('/');
+      user.save();
+    } else {
+      user.alphaTester = true;
+      user.save();
+      res.redirect('/aerenthia');
+    }
   };
   var testSlug = req.body.regUsername.toLowerCase().replace(/[^a-z A-Z 0-9]+/g, '');
   db.user.findOne({slug: testSlug}, function(err, user){
     if(!user){
       createUser();
-      console.log('Assigned this user to her session.');
-      res.redirect('/aerenthia');
     }else {
       res.redirect('/');
     };
