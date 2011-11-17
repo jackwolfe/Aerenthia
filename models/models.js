@@ -1,5 +1,7 @@
 var mongoose  = require('mongoose');
-mongoose.connect('mongodb://nodejitsu:4ab52acefbaf122be5910d75e9ffdde2@staff.mongohq.com:10056/nodejitsudb432201101087');
+var mongohost = (process.env.NODE_ENV == 'production') ? 'mongodb://nodejitsu:4ab52acefbaf122be5910d75e9ffdde2@staff.mongohq.com:10056/nodejitsudb432201101087' : 'mongodb://localhost/aerenthia';
+console.log("Using database: "+mongohost);
+mongoose.connect(mongohost);
 
 var Schema = mongoose.Schema;
 
@@ -29,4 +31,5 @@ exports.user_list = {
 , Jack: true
 , jeffreykaine: true
 , orionsreverie: true
+, Rockeye: true
 }

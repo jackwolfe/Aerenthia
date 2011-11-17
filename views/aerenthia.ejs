@@ -12,7 +12,7 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://aerenthia.nodejitsu.com/');
+  var socket = io.connect('<%= envhost %>');
   socket.on('room', function (data) {
     console.log(data);
     $("#history").append("<li>"+data.name+"</li>");

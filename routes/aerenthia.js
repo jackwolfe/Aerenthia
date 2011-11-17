@@ -7,6 +7,7 @@ exports.aerenthia = function(req, res){
     console.log('User verified!');
     res.render('aerenthia', { 
       title: 'Aerenthia'
+    , envhost: (process.env.NODE_ENV == 'production') ? 'http://aerenthia.nodejitsu.com' : 'http://localhost/'
     });
   }else {
     console.log('Invalid user! REJECTED!');
