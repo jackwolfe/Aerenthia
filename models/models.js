@@ -32,4 +32,5 @@ exports.user_list = {
 , jeffreykaine: true
 , orionsreverie: true
 , Rockeye: true
+, Hyperballistic: true
 }
