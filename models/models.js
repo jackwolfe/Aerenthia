@@ -33,4 +33,5 @@ exports.user_list = {
 , orionsreverie: true
 , Rockeye: true
 , Hyperballistic: true
+, necropsychronautron: true
 }

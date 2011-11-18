@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
 <script src="/socket.io/socket.io.js"></script>
+<script src="/javascripts/page.js"></script>
 <script>
   var socket = io.connect('<%= envhost %>');
   socket.on('room', function (data) {
@@ -30,18 +31,4 @@
     var command = $("#command").val();
     $("#history").append("<li>"+data+"</li>");
   });
-  $("#send").click(function(){
-    var command = $("#command").val();
-    $("#history").append("<li>"+command+"</li>");
-    socket.emit('command', command);
-    $("#command").val('');
-    $("#command").focus();
-  });
-  
-  $("#command").keypress(function(event) {
-    if (event.which == 13) {
-      $('#send').click();
-    };
-  });
-  
 </script>
