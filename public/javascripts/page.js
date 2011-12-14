@@ -5,6 +5,7 @@
     socket.emit('command', command);
     $("#command").val('');
     $("#command").focus();
+    
   });
   
   $("#command").keypress(function(event) {
@@ -13,3 +14,6 @@
     };
   });
   
+  
+  
+  $("div").scrollTop($("div")[0].scrollHeight);

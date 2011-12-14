@@ -1,0 +1,181 @@
+<!-- TITLE -->
+<div id="codexTitleImage" class="titleImage">AERENTHIA</div>
+<h2 id="codexText">CODEX</h2>
+
+<!-- NAVBAR -->
+<div id="codexNavBar">
+  <button type="button" id="codexPlayNowButton" class="codexNavButton">Play Now</button>
+  <button type="button" id="codexAlphaTestButton" class="codexNavButton">Alpha Testing</button>
+  <button type="button" id="codexGuideButton" class="codexNavButton">Guide</button>
+  <button type="button" id="codexNetworkButton" class="codexNavButton">Network</button>
+  <a href="http://magusxix.tumblr.com" id="codexDevblogButton" class="codexNavButton" target="_blank">DevBlog</a>
+</div>
+
+<!-- CONTENT -->
+<div id="codexContent">
+  
+  <!-- WELCOME -->
+  <h2 id="codexWelcomeHeader" class="codexWelcome">Welcome to the Codex</h2>
+  <p id="codexWelcomeParagraph" class="codexWelcome">Here you can learn more about the game.  Sign In to manage your account, or check out the guide and DevBlog.</p>
+  
+  <!-- PLAY NOW -->
+  <div id="regLogForms">
+    <div id="codexRegFormDiv">
+      <h1>Play Now!</h1>
+      <form id="registerForm" method="POST" action="/register">
+        <label for="EMail">EMail</label><input type="text" value="" placeholder="EMail@example.com" name="regEMail" id="regEMail"/><br/>
+        <label for="desiredUsername">Desired Username</label><input type="text" value="" placeholder="Username" name="regUsername" id="regUsername"/><br/>
+        <label for="desiredPassword">Desired Password</label><input type="password" value="" placeholder="Password" name="regPassword" id="regPassword"/><br/>
+        <input type="submit" value="Register" id="regSubmit" name="regSubmit"/>
+        <br class="clear"/>
+      </form>
+      <p id="codexWorkAround1" class="logregText">Already a member?</p>
+      <button type="button" id="logButton" class="reglogButton">Log In</button>
+    </div>
+    
+    <br/>
+    
+    <div id="codexLoginFormDiv">
+      <h1>Play Now!</h1>
+      <form id="loginForm" method="POST" action="/login">
+        <label for="username">Username</label><input type="text" value="" placeholder="Username" name="loginUsername" id="loginUsername"/><br/>
+        <label for="password">Password</label><input type="password" value="" placeholder="Password" name="loginPassword" id="loginPassword"/><br/>
+        <input type="submit" value="Sign In" id="loginSubmit" name="loginSubmit"/>
+        <br class="clear"/>
+      </form>
+      <p id="codexWorkAround2" class="logregText">Not a member yet?</p>
+      <button type="button" id="regButton" class="reglogButton">Register</button>
+    </div>
+  </div>
+  
+  <!-- ALPHA TESTING -->
+  <h2 id="codexAlphaHeader" class="codexAlpha">Alpha Testing</h2>
+  <p id="codexAlphaParagraph" class="codexAlpha">Aerenthia is currently in a closed alpha testing phase while we get the most basic elements of the game working.  If you can log in to the codex, but not into the game itself, it is because you are not an approved alpha tester.  Fear not!  We are hard at work getting our systems up and running, and expect to move into an open beta as soon as we can.</p>
+  <h3 id="codexAlphaVersion" class="codexAlpha">Version History</h3>
+  <ul id="codexVersionHistory" class="codexAlpha">
+    <li>0.0.11</li>
+      <ul>Improved the registration and sign in process.</ul>
+      <ul>General aesthetic and functional improvements to the website.</ul>
+      <ul>Created the Codex, a sum of what Aerenthia is so far.</ul>
+    <li>0.0.1</li>
+      <ul>Got the website and game client up and running in the most basic possible form!</ul>
+  </ul>
+  
+  <!-- GUIDE -->
+  <h2 id="codexGuideHeader" class="codexGuide">Basic Commands</h2>
+  <p id="codexGuideParagraph" class="codexGuide">As Aerenthia is a primarily text-based game, your primary method of interacting with the world is also text based.  Upon logging in to the game, you will notice a text input box at the bottom of your browser.  Here you can enter in all of the various commands that you will need in order to make your wildest Aerenthian dreams come true!  Provided here, for your convenience, is the current list of available commands.</p>
+  <ul id="codexCommandList" class="codexGuide">
+    <li>LOOK</li>
+      <ul>If you type the word "look" (without quotes) into the command box, you will be able to tell where you are, and what or who is also nearby.</ul>
+    <li>SAY</li>
+      <ul>The SAY command is how you can speak with the other players in Aerenthia.  It can be entered in one of four ways at the moment: Say, say, ", and '.  Simply type the command, and before pressing enter or send, follow the command up with what you would like to say to everyone.  For example, if I type "say Hello world!" (again, without the quotes,) everyone else in the room will be able to see what I said, "Hello world!"  Amazing, isn't it?</ul>
+  </ul>
+  
+  <!-- NETWORK -->
+  <h2 id="codexNetworkHeader" class="codexNetwork">Network Stuff</h2>
+  <p id="codexNetworkParagraph" class="codexNetwork">A world like Aerenthia truly does depend on the community of real live people that support it. We don't have any way for you guys to communicate with each other, or myself for that matter, but I want you to know that this is something I am working on.  The Network (for lack of a better name at the moment) will be our way of keeping in touch, making friends, and communicating our ideas about the wonderful world that we'd all like Aerenthia to become.  We don't have a due date for it yet, so just expect it sometime soon.</p>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<script>
+$(window).resize(function(){
+   var height = $(this).height() - $(".titleImage").height() - $("#codexText").height() - $("#codexNavBar").height()
+   $('#codexContent').height(height);
+})
+
+$(window).resize();
+
+$(function(){
+
+  $("#codexTitleImage").click(function(){
+    $("#codexLoginFormDiv").fadeOut(function(){
+      $(".codexAlpha").fadeOut(function(){
+        $(".codexGuide").fadeOut(function(){
+          $(".codexNetwork").fadeOut(function(){
+            $("#codexRegFormDiv").fadeOut('normal', function(){
+              $(".codexWelcome").fadeIn('normal', function(){
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  $("#codexPlayNowButton").click(function(){
+    $(".codexWelcome").fadeOut(function(){
+      $(".codexAlpha").fadeOut(function(){
+        $(".codexGuide").fadeOut(function(){
+          $(".codexNetwork").fadeOut(function(){
+            $("#codexRegFormDiv").fadeOut('normal', function(){
+              $("#codexLoginFormDiv").fadeIn('normal', function(){
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  $("#codexAlphaTestButton").click(function(){
+    $(".codexWelcome").fadeOut(function(){
+      $("#codexRegFormDiv").fadeOut(function(){
+        $("#codexLoginFormDiv").fadeOut(function(){
+          $(".codexGuide").fadeOut(function(){
+            $(".codexNetwork").fadeOut(function(){
+              $(".codexAlpha").fadeIn('normal', function(){
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+  
+  $("#codexGuideButton").click(function(){
+    $(".codexWelcome").fadeOut(function(){
+      $("#codexRegFormDiv").fadeOut(function(){
+        $("#codexLoginFormDiv").fadeOut(function(){
+          $(".codexAlpha").fadeOut(function(){
+            $(".codexNetwork").fadeOut(function(){
+              $(".codexGuide").fadeIn('normal', function(){
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+  
+  $("#codexNetworkButton").click(function(){
+    $(".codexWelcome").fadeOut(function(){
+      $("#codexRegFormDiv").fadeOut(function(){
+        $("#codexLoginFormDiv").fadeOut(function(){
+          $(".codexAlpha").fadeOut(function(){
+            $(".codexGuide").fadeOut(function(){
+              $(".codexNetwork").fadeIn('normal', function(){
+              console.log('yep');
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  $("#regButton").click(function(){
+    $("#codexLoginFormDiv").fadeOut('normal', function(){
+      $("#codexRegFormDiv").fadeIn('normal', function(){
+      });
+    });
+  });
+
+  $("#logButton").click(function(){
+    $("#codexRegFormDiv").fadeOut('normal',function(){
+      $("#codexLoginFormDiv").fadeIn('normal', function(){
+      });
+    });
+  });
+});
+</script>

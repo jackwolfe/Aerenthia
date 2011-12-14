@@ -52,7 +52,11 @@ app.get('/', routes.index);
 
 app.get('/aerenthia', routes.aerenthia);
 
+app.get('/codex', routes.codex);
+
 app.post('/login', routes.login);
+
+app.get('/logreg', routes.logreg);
 
 app.get('/logout', routes.logout);
 

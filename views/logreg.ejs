@@ -1,0 +1,50 @@
+<div class="titleImage">AERENTHIA</div>
+
+<div id="regLogForms">
+  <div id="regFormDiv">
+    <form id="registerForm" method="POST" action="/register">
+      <label for="EMail">EMail</label><input type="text" value="" placeholder="EMail@example.com" name="regEMail" id="regEMail"/><br/>
+      <label for="desiredUsername">Desired Username</label><input type="text" value="" placeholder="Username" name="regUsername" id="regUsername"/><br/>
+      <label for="desiredPassword">Desired Password</label><input type="password" value="" placeholder="Password" name="regPassword" id="regPassword"/><br/>
+      <input type="submit" value="Register" id="regSubmit" name="regSubmit"/>
+      <br class="clear"/>
+    </form>
+    <p class="logregText">Already a member?</p>
+    <button type="button" id="logButton" class="reglogButton">Log In</button>
+  </div>
+
+  <br/>
+
+  <div id="loginFormDiv">
+    <form id="loginForm" method="POST" action="/login">
+      <label for="username">Username</label><input type="text" value="" placeholder="Username" name="loginUsername" id="loginUsername"/><br/>
+      <label for="password">Password</label><input type="password" value="" placeholder="Password" name="loginPassword" id="loginPassword"/><br/>
+      <input type="submit" value="Sign In" id="loginSubmit" name="loginSubmit"/>
+      <br class="clear"/>
+    </form>
+    <p class="logregText">Not a member yet?</p>
+    <button type="button" id="regButton" class="reglogButton">Register</button>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<script>
+  $(function(){
+    $("#regButton").click(function(){
+      $("#loginFormDiv").fadeOut('normal', function(){
+        $("#regFormDiv").fadeIn('normal', function(){
+        });
+      });
+    });
+  });
+  
+  $(function(){
+    $("#logButton").click(function(){
+      $("#regFormDiv").fadeOut('normal',function(){
+        $("#loginFormDiv").fadeIn('normal', function(){
+        });
+      });
+    });
+  });
+</script>

@@ -4,6 +4,8 @@
 
 exports.aerenthia = require('./aerenthia').aerenthia;
 
+exports.codex = require('./codex').codex;
+
 exports.index = function(req, res){
   res.render('index', { 
     title: 'Aerenthia'
@@ -11,6 +13,8 @@ exports.index = function(req, res){
 };
 
 exports.login = require('./login').login;
+
+exports.logreg = require('./logreg').logreg;
 
 exports.logout = require('./logout').logout;
 

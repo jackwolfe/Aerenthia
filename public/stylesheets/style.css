@@ -1,35 +1,73 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #000000;
-  color: #DDDDDD;
+  background-color: #DFD5BA;
+  color: #333333;
   text-align: center;
+  margin: 0;
 }
 
 /*/ - - - - - - - - - - - - - - - - - - - - - INDEX */
 
 .clear {
-clear: both;
+  clear: both;
 }
 
-h1 {
-  color: #DBDB70;
-  font-size: 50px;
+#wrapper{
+  min-height: 300px;
+  width: 960px;
+  background: #FFF;
+  box-shadow: 0px 0px 20px #FFF;
+  margin: 0 auto;
 }
 
-#regLogButtons {
-  margin: -20px 0px 0px 0px;
+.titleImage {
+  text-indent: -9999px;
+  background: url("../images/title.png") no-repeat;
+  margin: 60px auto 50px auto;
+  width: 267px;
+  height: 51px;
+}
+
+.ribbon {
+  background: #D5CCB6;
+  box-shadow: 0px 0px 8px #CBC0A4;
+}
+
+#homeButtons a {
+  display: inline-block;
+  text-decoration: none;
+  background: url("../images/navButton.png") no-repeat;
+  height: 27px;
+  width: 132px;
+  padding: 10px 0px 0px 0px;
+  color: #333;
+  text-shadow: 0px 1px 1px white;
+  font-weight: bold;
+  margin: 0px 4px;
+}
+
+.regLogButton {
+
 }
 
 #regButton {
-  display: inline;
-  margin: 25px 25px 25px 25px;
-  padding: 6px 10px 6px 10px;
+  background: url("../images/accountButton.png") no-repeat;
+  border: none;
+  height: 30px;
+  width: 90px;
+  margin: 1px 45px 0px 0px;
+  font-weight: bold;
+  font-size: 10px;
 }
 
 #logButton {
-  display: inline;
-  margin: 25px 25px 25px 25px;
-  padding: 6px 10px 6px 10px;
+  background: url("../images/accountButton.png") no-repeat;
+  border: none;
+  height: 30px;
+  width: 90px;
+  margin: 1px 20px 0px 0px;
+  font-weight: bold;
+  font-size: 10px;
 }
 
 #regLogForms {
@@ -42,10 +80,14 @@ h1 {
 }
 
 #regFormDiv {
-  background-color: #030303;
   padding: 4px 0px 10px 0px;
   display: none;
 }
+
+#regFormDiv form {
+  border-bottom: 1px solid;
+}
+
 #regFormDiv input {
   position: relative;
 }
@@ -58,6 +100,11 @@ h1 {
 
 #regSubmit {
   float: right;
+  background: url("../images/navButton.png") no-repeat;
+  border: none;
+  height: 35px;
+  width: 130px;
+  font-weight: bold;
 }
 
 #registerForm label {
@@ -69,9 +116,11 @@ h1 {
 }
 
 #loginFormDiv {
-  background-color: #030303;
   padding: 4px 0px 10px 0px;
-  display: none;
+}
+
+#loginFormDiv form {
+  border-bottom: 1px solid;
 }
 
 #loginFormDiv input {
@@ -86,6 +135,11 @@ h1 {
 
 #loginSubmit {
   float: right;
+  background: url("../images/navButton.png") no-repeat;
+  border: none;
+  height: 35px;
+  width: 130px;
+  font-weight: bold;
 }
 
 #loginForm label {
@@ -96,8 +150,143 @@ h1 {
   margin: 5px 10px 0px 0px;
 }
 
+.logregText {
+  float: left;
+  margin: 10px 0px 0px 125px;
+}
+
 a {
   color: #00B7FF;
+}
+
+/*/ - - - - - - - - - - - - - - - - - - - - - - - - - - - CODEX */
+
+.codexAccountButton {
+  float: right;
+  background: url("../images/accountButton.png") no-repeat;
+  border: none;
+  height: 30px;
+  width: 90px;
+  margin: 1px 20px 0px 0px;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+#codexTitleImage {
+  text-indent: -9999px;
+  background: url("../images/title.png") no-repeat;
+  margin: 20px auto 0px auto;
+  width: 267px;
+  height: 51px;
+}
+
+#codexText {
+  margin: 0px 0px 0px 0px;
+}
+
+#codexNavBar {
+  background-color: #D5CCB6;
+  height: 50px;
+}
+
+.codexNavButton {
+  background: url("../images/navButton.png") no-repeat;
+  border: none;
+  height: 35px;
+  width: 130px;
+  font-weight: bold;
+  margin: 6px auto 0px;
+}
+
+#codexDevblogButton {
+  display: inline-block;
+  text-decoration: none;
+  background: url("../images/navButton.png") no-repeat;
+  height: 27px;
+  width: 132px;
+  padding: 10px 0px 0px 0px;
+  color: #333;
+  text-shadow: 0px 1px 1px white;
+  font-weight: bold;
+  margin: 0px 4px;
+}
+
+#codexContent {
+  background: url("../images/background.png");
+  max-width: 960px;
+  margin: 0px auto;
+}
+
+#codexContent > h2 {
+  max-width: 640px;
+  margin: 0px auto;
+  padding: 10px 0px;
+  text-align: left;
+}
+
+#codexContent > h3 {
+  max-width: 640px;
+  margin: 20px auto 0px;
+  padding: 10px 0px;
+  text-align: left;
+}
+
+#codexVersionHistory {
+  max-width: 640px;
+  margin: -10px auto;
+  padding: 10px 0px;
+  text-align: left;
+}
+
+#codexContent > p {
+  max-width: 640px;
+  margin: 0px auto;
+  text-align: left;
+}
+
+#codexCommandList {
+  max-width: 640px;
+  margin: 10px auto 0px;
+  padding: 10px 0px;
+  text-align: left;
+}
+
+.codexAlpha {
+  display: none;
+}
+
+.codexGuide {
+  display: none;
+}
+
+.codexNetwork {
+  display: none;
+}
+
+#codexRegFormDiv {
+  padding: 4px 0px 10px 0px;
+  display: none;
+}
+
+#codexRegFormDiv form {
+  border-bottom: 1px solid;
+}
+
+#codexRegFormDiv input {
+  position: relative;
+}
+
+#codexLoginFormDiv {
+  padding: 4px 0px 10px 0px;
+  display: none;
+}
+
+#codexLoginFormDiv form {
+  border-bottom: 1px solid;
+}
+
+#codexLoginFormDiv input {
+  position: relative;
 }
 
 /*/ - - - - - - - - - - - - - - - - - - - - - - - - - - - AERENTHIA */
